@@ -1,0 +1,94 @@
+/* === Global === */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff6f2;
+    color: #333;
+}
+/* === Header === */
+header {
+    background-color: #fad4c0;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #5a2e2e;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #5a2e2e;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff5e5e;
+}
+
+/* === Contenu principal === */
+article {
+    background-color: #fee9e1;
+    padding: 30px;
+}
+
+/* === Produits === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td {
+    padding: 20px;
+}
+
+td img {
+    width: 150px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+td img:hover {
+    transform: scale(1.05);
+}
+
+#lien {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+#lien:hover {
+    text-decoration: underline;
+    color: #e91e63;
+}
+
+/* === Footer === */
+footer {
+    background-color: #fad4c0;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #5a2e2e;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    table {
+        display: block;
+    }
+    tr {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    td {
+        width: 100%;
+        max-width: 300px;
+    }
+}

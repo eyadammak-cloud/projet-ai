@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ produit.nom }}{% endblock %}
+
+{% block content %}
+    <h3>📸 Choisir une autre image de main :</h3>
+    <input type="file" id="main_file"><br><br>
+
+    <h3>💍 Accessoire :</h3>
+    <input type="file" id="accessoire_file"><br><br>
+
+    <input type="text" id="prompt" placeholder="Décris ce que tu veux générer" style="width: 100%;"><br><br>
+    <button onclick="envoyer()">👋 Essayer sur ma main</button>
+
+    <img id="image_result" style="width:300px; display:none;"><br>
+    <p id="reponse" style="white-space: pre-wrap; font-style: italic;"></p>
+
+    <script>
+        async function envoyer() {
+            const prompt = document.getElementById("prompt").value;
+
+            const fichierMain = document.getElementById("main_file").files[0];
+            const fichierAccessoire = document.getElementById("accessoire_file").files[0];
+
+            if (!fichierMain || !fichierAccessoire) {
+                alert("Merci de sélectionner les 2 images.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("main_image", fichierMain);
+            formData.append("accessory_image", fichierAccessoire);
+            formData.append("prompt", prompt);
+
+            fetch("http://127.0.0.1:8000/generate_image_ai", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // 👈 pour déboguer si besoin
+
+                const imageData = data.candidates?.[0]?.content?.parts?.[0]?.inline_data?.data;
+
+                if (imageData) {
+                    document.getElementById("image_result").src = "data:image/png;base64," + imageData;
+                    document.getElementById("image_result").style.display = "block";
+                    document.getElementById("reponse").innerText = "✅ Image générée avec succès.";
+                } else {
+                    const texte = data.candidates?.[0]?.content?.parts?.[0]?.text || "❌ Aucune image générée.";
+                    document.getElementById("reponse").innerText = texte;
+                }
+            })
+            .catch(error => {
+                document.getElementById("reponse").innerText = "Erreur : " + error;
+                console.error("Erreur :", error);
+            });
+        }
+    </script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

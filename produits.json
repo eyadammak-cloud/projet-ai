@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "nom": "Bague dorée",
+        "image": "image1.jpg",
+        "description": "Une magnifique bague en acier doré.",
+        "prix": 29.99
+    },
+    {
+        "id": 2,
+        "nom": "Bague houta",
+        "image": "image2.jpg",
+        "description": "Une bague fine et élégante.",
+        "prix": 19.99
+    },
+    {
+        "id": 3,
+        "nom": "Bague rainbow",
+        "image": "image3.jpg",
+        "description": "Une bague colorée",
+        "prix": 7
+    }
+]

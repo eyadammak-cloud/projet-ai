@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Ma Boutique{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+        <style>
+            main{
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0dbd2;
+    color: #333;
+}
+/* === Header === */
+header {
+    background-color: #fad4c0;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #5a2e2e;
+}
+nav {
+    display: flex;               /* Affiche les liens côte à côte */
+    justify-content: center;     /* Centre les liens dans le header */
+    gap: 30px; 
+}
+
+nav a {
+    text-decoration: none;
+    color: #5a2e2e;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff5e5e;
+}
+
+/* === Contenu principal === */
+article {
+    background-color: #fbeeea;
+    padding: 60px;
+}
+
+/* === Produits === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td {
+    padding: 20px;
+}
+.image{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;      /* Coupe l’image proprement sans la déformer */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+td img {
+    width: 160px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+td img:hover {
+    transform:scale(1.05);
+}
+
+#lien {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+#lien:hover {
+    text-decoration: none;
+    color: #762c07;
+}
+
+/* === Footer === */
+footer {
+    background-color: #fad4c0;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #5a2e2e;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    table {
+        display: block;
+    }
+    tr {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;/* le passage à la ligne (wrap)*/
+    }
+    td {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+        
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1 style="padding: 20px;">Bienvenue sur mon site</h1>
+            <nav>
+                <a href="{{ url_for('index') }}">Accueil</a>
+                
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <article>
+            {% block content %}{% endblock %}
+        </article>
+
+        <footer>
+            <p>&copy; 2025 Tous droits réservés.</p>
+            <p id="contact">Téléphone : 97260077 — Email : dammake356@gmail.com — Localisation : Sfax</p>
+        </footer>
+
+    </body>
+</html>
