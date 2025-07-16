@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-GEMINI_API_KEY = "AIzaSyAonezRuYgY0OoQjQl7fsMGvQVRXjdHoww"  # ⚠️ Remplace par ta clé
+GEMINI_API_KEY = ".."  # ⚠️ Remplace par ta clé
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
